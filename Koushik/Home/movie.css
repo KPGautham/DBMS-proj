@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    background-image: url('https://img.freepik.com/free-photo/arrangement-movie-elements-black-background_23-2148416799.jpg?w=740&t=st=1708235947~exp=1708236547~hmac=54b429171e1f2ace50bf45f5efc7f3cdab1166deaf28168d49bd841a4ebba386');
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    background-color: #141414;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.content h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+    background-color: #242424;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-right: 1rem;
+}
+
+.card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.card p {
+    color: #ccc;
+    font-size: 0.8rem;
+    margin: 0;
+}
