@@ -53,9 +53,14 @@ app.get("/", (req,res)=>{
 
 });
 
-app.get("/home",  (req,res)=>{
+app.get("/home", async (req,res)=>{
     if(req.isAuthenticated()){
-        res.render("home.ejs");
+        const ReviewedMovies = await showReviewedMovies(req.user);
+        //console.log(ReviewedMovies);
+        const WatchlistMovies = await showWatchlistMovies(req.user);
+        console.log(WatchlistMovies);
+        
+        res.render("home.ejs",{ReviewedMovies:ReviewedMovies, WatchlistMovies:WatchlistMovies});
     } else{   
 
         res.render("login.ejs");
@@ -79,6 +84,8 @@ app.post("/register", async (req,res)=>{
 
     const username = req.body.username;
     const password = req.body.password;
+    const age = req.body.age;
+    const country = req.body.country;
 
     try{
         const [checkResult] = await db.query("SELECT * FROM USER WHERE USERNAME = ? ", [username]) ;
@@ -90,8 +97,8 @@ app.post("/register", async (req,res)=>{
                   console.error("Error hashing password:", err);
                 } else {
                   const [result] = await db.query(
-                    "INSERT INTO user (username, password) VALUES (?, ?);",
-                    [username, hash]
+                    "INSERT INTO user (username, password , age, country  ) VALUES (?, ?, ?, ?);",
+                    [username, hash, age, country]
                   );
                   res.redirect("/login");
                   
@@ -154,3 +161,24 @@ app.listen(port, (req,res)=>{
 
     console.log(`Listening on port ${port}`);
 });
+
+
+async function showReviewedMovies(user) {
+  console.log(user);
+
+  const result = await db.query("SELECT M.MOVIE_ID, M.TITLE, M.MOVIE_IMAGE_URL FROM MOVIE M, REVIEW R WHERE M.MOVIE_ID=R.MOVIE_ID AND R.USER_ID =?",[user.USER_ID]);
+  const rows= result[0];
+  console.log(rows);
+  return rows;
+
+  //res.render("home.ejs",{ReviewedMovies:rows});;
+
+
+}
+
+async function showWatchlistMovies(user) {
+  
+  const result = await db.query("Select M.MOVIE_ID, M.TITLE, M.MOVIE_IMAGE_URL FROM MOVIE M, WATCHLIST W WHERE M.MOVIE_ID=W.MOVIE_ID AND USER_ID =?",[user.USER_ID]);
+  const rows = result[0];
+  return rows;
+}
