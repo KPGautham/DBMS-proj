@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <h1>home</h1>
+    <title>Completed</title>
 </head>
 <body>
     <nav>
@@ -31,24 +30,25 @@
         </div>
     </nav>
     <div>
-        <h2>Trending Movies</h2>
+        <h1>Movies Completed</h1>
         <div>
-            <% if (locals.trendingMovies && locals.trendingMovies.length > 0) { %>
-                <% locals.trendingMovies.forEach(Movie => { %>
+            <% if (locals.completedMovies && locals.completedMovies.length>0) {%>
+                <% completedMovies.forEach(Movie =>{ %>
                     <div>
-                        <div>
-                            <img src="<%= Movie.MOVIE_IMAGE_URL %>" alt="">
-                        </div>
-                        <div><%= Movie.TITLE %></div>
+                        <img src="<%=Movie.MOVIE_IMAGE_URL%>" alt="">
+                    </div>
+                    <div>
+                        <a href="/movie/<%= Movie.MOVIE_ID %>"><%= Movie.TITLE %></a>
+                    </div>
+                    <div>
+                        No of times : <%= Movie.NO_OF_TIMES %> <button><a href="/add/<%= Movie.MOVIE_ID %>">Add</a></button>
                     </div>
                 <% }); %>
-            <% } else { %>
-                <p>No Trending Movie</p>
+            <% } else{ %>
+                <p>No Movies in here</p>
             <% } %>
         </div>
     </div>
     
-    
-
-
-    
+</body>
+</html>

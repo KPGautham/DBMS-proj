@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <h1>home</h1>
+    <title>Watchlist</title>
 </head>
 <body>
     <nav>
@@ -31,24 +30,27 @@
         </div>
     </nav>
     <div>
-        <h2>Trending Movies</h2>
+        <h1>Watchlist</h1>
         <div>
-            <% if (locals.trendingMovies && locals.trendingMovies.length > 0) { %>
-                <% locals.trendingMovies.forEach(Movie => { %>
+            <% if (locals.watchlistMovies && locals.watchlistMovies.length>0){ %>
+                <% watchlistMovies.forEach(Movie =>{ %>
                     <div>
-                        <div>
-                            <img src="<%= Movie.MOVIE_IMAGE_URL %>" alt="">
-                        </div>
-                        <div><%= Movie.TITLE %></div>
+                        <img src="<%= Movie.MOVIE_IMAGE_URL %>" alt="">
+                    </div>
+                    <div>
+                        <a href="/movie/<%= Movie.MOVIE_ID %>"><%= Movie.TITLE %></a>
+                    </div>
+                    <div>
+                        <form action="/finished/<%= Movie.MOVIE_ID%>">
+                            <button type="submit">Completed</button>
+                        </form>
                     </div>
                 <% }); %>
             <% } else { %>
-                <p>No Trending Movie</p>
+                <p>No Movies in Watchlist</p>
             <% } %>
         </div>
     </div>
     
-    
-
-
-    
+</body>
+</html>
