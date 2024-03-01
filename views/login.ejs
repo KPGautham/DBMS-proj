@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <style src="styles.css"></style>
+    <title>Movie X Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <h1>Login Page</h1>
-    <form action="/login" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username">
-        <label for="password">Password</label>
-        <input type="text" name="password">
-
-            <button type="submit">submit</button>
-
-
-    </form>  
-    <a href="/register">Not Registered?</a>
+    <div class="login-container">
+        <div class="logo">MovieX</div>
+        <form>
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Email or phone number">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="links">
+            <a href="#" class="forgot-password">Forgot password?</a>
+            <a href="/register" class="signup">Sign up now</a>
+        </div>
+    </div>
 </body>
 </html>
