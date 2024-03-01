@@ -31,38 +31,25 @@
             </form>
         </div>
     </nav>
-<div>
-    <h1>Movies in Database</h1>
     <div>
-        <% if (locals.moviesInDatabase) {%>
-        <table>
-            <thead>
-                <tr>
-                    <th>Movie ID</th>
-                    <th>Movie Name</th>
+        <h1>Add Artists</h1>
+        <form action="/addArtists" method="post">
+            <label for="artistName">Artist Name : </label>
+            <input type="text" name="artistName" id="" required>
+            <label for="role">Artist Profession</label>
+            <input type="text" name="role" id="" required>
+            <label for="artistGender">Artist Gender</label>
+            <input type="text" name="artistGender" id="" required>
+            <button type="submit">Go</button>
 
-                </tr>
-            </thead>
-            
-            <tbody>
-                <% moviesInDatabase.forEach(Movie =>{ %>
-               
-                    <tr>
-                        <td><%= Movie.MOVIE_ID %></td>
-                        <td><%= Movie.TITLE %></td>
-                    </tr>
-                <% }); %>
-
-            </tbody>
-
-        </table>
-        <% } else { %>
-            <p>No Movies in Database</p>
-        <% } %>
-
+        </form>
     </div>
+    <% if (locals.message){ %>
+        <script>
+            alert("<%=message%>");
+        </script>
+    <% } %>
 
-</div>
     
 </body>
 </html>

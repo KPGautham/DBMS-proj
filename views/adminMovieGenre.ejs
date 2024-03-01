@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li ><a href="/admin">Movies in database</a></li>
+                <li ><a href="/adminMovies">Add Movies</a></li>
+                <li><a href="/showArtists">Artists in Database</a></li>
+                <li ><a href="/addArtists">Add Artists in Database</a></li>
+                <li ><a href="/adminGenre">Genres in Database</a></li>
+                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
+                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
+    
+            </ul>
+        </div>
+        <!-- <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div> -->
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div>
+        <h2>Link Genres to Movies</h2>
+        <div>
+            <form action="/adminMovieGenre" method="post">
+                <label for="genreId">Enter Genre ID:</label>
+                <input type="number" name="genreId" id="" required>
+                <label for="movieId">Enter Movie ID:</label>
+                <input type="number" name="movieId" id="" required>
+                <button type="submit">Go</button>
+            </form>
+        </div>
+        <h2>Showing Movie_Genres</h2>
+        <div>
+            <% if (locals.movieGenres && locals.movieGenres.length>0) {%>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Genre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% movieGenres.forEach(movieGenre =>{ %>
+                        <tr>
+                            <td><%= movieGenre.TITLE %></td>
+                            <td><%= movieGenre.GENRE_NAME %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <p>
+                    No table to show
+                </p>
+            <% } %>
+        </div>
+    </div>
+    <% if (locals.message){ %>
+        <script>
+            alert("<%=message%>");
+        </script>
+    <% } %>
+
+</body>
+</html>

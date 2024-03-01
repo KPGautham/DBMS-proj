@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Genres</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li ><a href="/admin">Movies in database</a></li>
+                <li ><a href="/adminMovies">Add Movies</a></li>
+                <li><a href="/showArtists">Artists in Database</a></li>
+                <li ><a href="/addArtists">Add Artists in Database</a></li>
+                <li ><a href="/adminGenre">Genres in Database</a></li>
+                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
+                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
+    
+            </ul>
+        </div>
+        <!-- <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div> -->
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div>
+        <h2>Add Genres</h2>
+        <form action="/addGenres" method="post">
+            <label for="genreName">Genre Name : </label>
+            <input type="text" name="genreName" id="" required>
+            <button type="submit">Go</button>
+            
+        </form>
+    </div>
+    <div>
+        <h2>Genres in Database</h2>
+        <div>
+            <% if (locals.genresInDB && locals.genresInDB.length>0){ %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Genre Id</th>
+                            <th>Genre Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% genresInDB.forEach(genre =>{ %>
+                            <tr>
+                                <td><%= genre.GENRE_ID %></td>
+                                <td><%= genre.GENRE_NAME %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No genres in the table currently</p>
+            <% } %>
+        </div>
+
+    </div>
+    <% if (locals.message) { %>
+        <script>
+            alert("<%=message%>");
+        </script>
+    <% } %>
+    
+</body>
+</html>
