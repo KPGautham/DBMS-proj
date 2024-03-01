@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li href="/home">Home</li>
+                <li href="/watchlist">Watchlist</li>
+                <li href="/reviews">Reviews</li>
+                <li href="/community">Community</li>
+
+            </ul>
+        </div>
+        <div>
+            <form action="/search" method="post">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+        <div>
+            <form action="/logout" method="get">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div>
+        <h1>Top Reviews</h1>
+        <% if(locals.reviews && locals.reviews.length>0) { %>
+            <% reviews.forEach(review =>{ %>
+            <div>
+                <div>
+                    <img src="<%= review.MOVIE_IMAGE_URL %>" alt="">
+                </div>
+                <div> <a href=""><%= review.TITLE %></a></div>
+                <div>
+                    <h2><%= review.USERNAME %></h2>
+                    <p><%= review.TEXT %></p>
+                    <h3>Score :<%= review.SCORE %>/10</h3>
+                </div>
+
+            </div>
+            <% }); %>
+        <% } else { %>
+            <p>No Reviews Available right now</p>
+        <% } %>
+
+    </div>
+    
+</body>
+</html>

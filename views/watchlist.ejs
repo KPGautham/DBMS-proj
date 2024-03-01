@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchlist</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li ><a href="/home">Home</a></li>
+                <li ><a href="/watchlist">Watchlist</a></li>
+                <li><a href="/completed">Completed</a></li>
+                <li ><a href="/reviews">Reviews</a></li>
+                <li ><a href="/community">Community</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div>
+        <h1>Watchlist</h1>
+        <div>
+            <% if (locals.watchlistMovies && locals.watchlistMovies.length>0){ %>
+                <% watchlistMovies.forEach(Movie =>{ %>
+                    <div>
+                        <img src="<%= Movie.MOVIE_IMAGE_URL %>" alt="">
+                    </div>
+                    <div>
+                        <a href="/movie/<%= Movie.MOVIE_ID %>"><%= Movie.TITLE %></a>
+                    </div>
+                    <div>
+                        <form action="/finished/<%= Movie.MOVIE_ID%>">
+                            <button type="submit">Completed</button>
+                        </form>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No Movies in Watchlist</p>
+            <% } %>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li ><a href="/home">Home</a></li>
+                <li ><a href="/watchlist">Watchlist</a></li>
+                <li><a href="/completed">Completed</a></li>
+                <li ><a href="/reviews">Reviews</a></li>
+                <li ><a href="/community">Community</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <h1> Searched Movies </h1>
+    <div>
+        <% if(locals.searchedMovies && locals.searchedMovies.length>0){ %>
+            <% searchedMovies.forEach(Movie =>{ %>
+                <div>
+                    <img src="<%=Movie.MOVIE_IMAGE_URL%>" alt="">
+                </div>
+                <div> <a href="/movie/<%= Movie.MOVIE_ID %>"><%=Movie.TITLE%></a></div>
+            <% }); %>
+        <% } else{ %>
+            <p>No such Movies Available</p>
+        <% } %>    
+    </div>
+    
+    
+</body>
+</html>
