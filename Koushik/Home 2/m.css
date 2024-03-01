@@ -41,7 +41,7 @@ nav a {
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-/* Image card*/    
+/* header*/    
   .max_width {
     max-width: 1200px;
     margin: 0 auto;
@@ -230,13 +230,4 @@ audio, canvas, embed, iframe, img, object, svg, video {
     }
   }
   
-  /* Link Styles */
-  .nav-link {
-    color: #080808;
-    text-decoration: none;
-  }
-  
-  .nav-link:hover {
-    text-decoration: underline;
-  }
  
