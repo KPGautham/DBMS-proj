@@ -4,36 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/admin">Movies in database</a></li>
-                <li ><a href="/adminMovies">Add Movies</a></li>
-                <li><a href="/showArtists">Artists in Database</a></li>
-                <li ><a href="/addArtists">Add Artists in Database</a></li>
-                <li ><a href="/adminGenre">Genres in Database</a></li>
-                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
-                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
-    
-            </ul>
-        </div>
-        <!-- <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div> -->
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-<div>
-    <h1>Movies in Database</h1>
-    <div>
+    <div id="nav">
+        <a href="/admin">Movies in database</a>
+        <a href="/adminMovies">Add Movies</a>
+        <a href="/showArtists">Artists in Database</a>
+        <a href="/addArtists">Add Artists in Database</a>
+        <a href="/adminGenre">Genres in Database</a>
+        <a href="/adminMovieGenre">Link Movies with Genres </a>
+        <a href="/adminMovieArtist">Link Movies with Artists</a>
+        <!--<form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
+            <button type="submit">Go</button>
+        </form>-->
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
+    </div>
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+    <div id="main">
+        <div id="page1">
+        <div id="movie">
+            <h1>Movies in Database</h1>
+        <div id="moviedatabase"> 
         <% if (locals.moviesInDatabase) {%>
         <table>
             <thead>
@@ -61,8 +57,9 @@
         <% } %>
 
     </div>
-
 </div>
-    
+</div>
+</div>
+<script src="admin.js"></script>
 </body>
 </html>

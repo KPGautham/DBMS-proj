@@ -3,53 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>addArtists</title>
+    <link rel="stylesheet" href="addArtists.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/admin">Movies in database</a></li>
-                <li ><a href="/adminMovies">Add Movies</a></li>
-                <li><a href="/showArtists">Artists in Database</a></li>
-                <li ><a href="/addArtists">Add Artists in Database</a></li>
-                <li ><a href="/adminGenre">Genres in Database</a></li>
-                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
-                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
-    
-            </ul>
-        </div>
-        <!-- <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div> -->
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <div>
-        <h1>Add Artists</h1>
-        <form action="/addArtists" method="post">
-            <label for="artistName">Artist Name : </label>
-            <input type="text" name="artistName" id="" required>
-            <label for="role">Artist Profession</label>
-            <input type="text" name="role" id="" required>
-            <label for="artistGender">Artist Gender</label>
-            <input type="text" name="artistGender" id="" required>
+    <div id="nav">
+        <a href="/admin">Movies in database</a>
+        <a href="/adminMovies">Add Movies</a>
+        <a href="/showArtists">Artists in Database</a>
+        <a href="/addArtists">Add Artists in Database</a>
+        <a href="/adminGenre">Genres in Database</a>
+        <a href="/adminMovieGenre">Link Movies with Genres </a>
+        <a href="/adminMovieArtist">Link Movies with Artists</a>
+        <!--<form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
             <button type="submit">Go</button>
-
-        </form>
+        </form>-->
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
     </div>
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+            <div class="form-body">
+                <div class="row">
+                    <div class="form-holder">
+                        <div class="form-content">
+                            <div class="form-items">
+                                <h3>Add Artists</h3>
+                                <form class="requires-validation" novalidate action="/addArtists" method="post">
+                                    <div class="col-md-12">
+                                        <label for="artistName">Artist Name : </label>
+                                            <input class="form-control" type="text" name="artistName" placeholder="Artist username" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="role">Artist Profession</label>
+                                        <input class="form-control" type="text" name="role" placeholder="Artist Profession" required>      
+                                    </div>
+                                   <div class="col-md-12">
+                                    <label for="artistGender">Artist Gender</label>
+                                        <input class="form-control" type="text" name="artistGender" placeholder="Artist Gender" required>                                   
+                               </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                  <label class="form-check-label">I confirm that all data are correct</label>
+                                 <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+                                </div>
+                                    <div class="form-button mt-3">
+                                        <button id="submit" type="submit" class="btn btn-primary">Go</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     <% if (locals.message){ %>
         <script>
             alert("<%=message%>");
         </script>
     <% } %>
-
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="addArtists.js"></script>
 </body>
 </html>
+<!-- <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div> -->
