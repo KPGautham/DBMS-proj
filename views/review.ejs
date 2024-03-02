@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Review</title>
 </head>
 <body>
     <nav>
         <div>
             <ul>
-                <li href="/home">Home</li>
-                <li href="/watchlist">Watchlist</li>
-                <li href="/reviews">Reviews</li>
-                <li href="/community">Community</li>
+                <li ><a href="/home">Home</a></li>
+                <li ><a href="/watchlist">Watchlist</a></li>
+                <li><a href="/completed">Completed</a></li>
+                <li ><a href="/reviews">Reviews</a></li>
+                <li ><a href="/community">Community</a></li>
 
             </ul>
         </div>
         <div>
-            <form action="/search" method="post">
+            <form action="/search" method="get">
                 <input type="text" placeholder="Search Movies" name="Movies">
                 <button type="submit">Go</button>
             </form>
         </div>
         <div>
-            <form action="/logout" method="get">
+            <form action="/logout" method="post">
                 <button type="submit">Logout</button>
             </form>
         </div>
     </nav>
     <div>
-        <h1>Top Reviews</h1>
+        <h1>Your Reviews</h1>
         <% if(locals.reviews && locals.reviews.length>0) { %>
             <% reviews.forEach(review =>{ %>
             <div>
@@ -39,12 +39,9 @@
                 </div>
                 <div> <a href=""><%= review.TITLE %></a></div>
                 <div>
-                    <h2><%= review.USERNAME %></h2>
                     <p><%= review.TEXT %></p>
                     <h3>Score :<%= review.SCORE %>/10</h3>
-                    <p><%= review.LIKES %> <a href="/like?review_id=<%= review.REVIEW_ID %>"><span class="material-symbols-outlined">
-                        thumb_up
-                        </span></a></p>
+                    <p>Likes:<%= review.LIKES %></p>
                 </div>
 
             </div>

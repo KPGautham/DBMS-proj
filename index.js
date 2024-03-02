@@ -220,7 +220,10 @@ app.get('/watchlist', async(req,res)=>{
 
 });
 
-app.get('reviews', async (req,res)=>{
+app.get('/reviews', async (req,res)=>{
+  const userId = req.user.USER_ID;
+  const reviews = await getUserReviews(userId);
+  res.render("review.ejs",{reviews:reviews});
 
 
 });
@@ -375,6 +378,25 @@ app.post("/adminMovieGenre", async(req,res)=>{
   res.render("adminMovieGenre.ejs",{movieGenres:movieGenres,message:message});
 });
 
+app.get("/like", async (req,res)=>{
+  const reviewId = req.query.review_id;
+  await incrementLikes(reviewId);
+  const reviews = await getCommunityReviews();
+  res.render("community.ejs",{reviews:reviews});
+
+});
+
+app.get("/incrementMovie", async (req,res)=>{
+
+  const movieId = req.query.movieId;
+  const userId = req.user.USER_ID;
+  await incrementMovies(movieId,userId);
+  const completedMovies = await getCompletedMovies(userId);
+  res.render("completed.ejs", {completedMovies: completedMovies});
+  
+});
+
+
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }
@@ -484,7 +506,7 @@ async function getSearchedMovies(movie){
 
 async function getCommunityReviews(){
 
-  const result = await db.query("SELECT M.TITLE,  M.MOVIE_IMAGE_URL, R.REVIEW_ID, R.TEXT, R.SCORE, R.USER_ID, R.MOVIE_ID, U.USERNAME FROM MOVIE M, REVIEW R, USER U WHERE R.MOVIE_ID=M.MOVIE_ID AND R.USER_ID=U.USER_ID");
+  const result = await db.query("SELECT M.TITLE,  M.MOVIE_IMAGE_URL, R.REVIEW_ID, R.TEXT, R.SCORE, R.USER_ID, R.MOVIE_ID, R.LIKES, U.USERNAME FROM MOVIE M, REVIEW R, USER U WHERE R.MOVIE_ID=M.MOVIE_ID AND R.USER_ID=U.USER_ID");
   const rows = result[0];
   return rows;
 };
@@ -556,7 +578,7 @@ async function addMovieToCompleted(movieId,userId){
 
 async function addReview(movieId,userId,score,text){
   try{
-    const [result] = await db.query("INSERT INTO REVIEW(MOVIE_ID,USER_ID,SCORE,TEXT) VALUES(?,?,?,?) ",[movieId,userId,score,text]);
+    const [result] = await db.query("INSERT INTO REVIEW(MOVIE_ID,USER_ID,SCORE,TEXT,LIKES) VALUES(?,?,?,?,0) ",[movieId,userId,score,text]);
     console.log(result);
     console.log('Inserted Successfully');
   } catch(error){
@@ -662,4 +684,23 @@ async function addMovieGenre(genreId,movieId){
   } catch(error){
     console.log(error);
   }
+};
+
+
+async function incrementLikes(reviewId){
+  const result = await db.query("CALL IncrementLikes(?)",[reviewId]);
+  console.log("Incremented Successfully");
+
+};
+
+async function incrementMovies(movieId,userId){
+  const result = await db.query("UPDATE COMPLETED SET NO_OF_TIMES = NO_OF_TIMES + 1 WHERE USER_ID = ? AND MOVIE_ID = ?",[userId,movieId]);
+  console.log("Incremented Successfully");
+
+};
+
+async function getUserReviews(userId){
+  const result = await db.query("SELECT M.TITLE,  M.MOVIE_IMAGE_URL, R.REVIEW_ID, R.TEXT, R.SCORE, R.USER_ID, R.MOVIE_ID, R.LIKES, U.USERNAME FROM MOVIE M, REVIEW R, USER U WHERE R.MOVIE_ID=M.MOVIE_ID AND R.USER_ID=?",[userId]);
+  const rows = result[0];
+  return rows;
 };
