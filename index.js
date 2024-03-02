@@ -68,9 +68,11 @@ app.get("/home", async (req,res)=>{
     }
 });
 
-app.get("/admin", (req, res) => {
+app.get("/admin", async (req, res) => {
   if (req.isAuthenticated() && req.user.USER_TYPE === 'ADMIN') {
-      res.render("admin.ejs");
+    const moviesInDatabase = await getMoviesInDatabase();
+    console.log(moviesInDatabase);
+    res.render("admin.ejs", { moviesInDatabase:moviesInDatabase});
   } else {
       res.redirect("/login");
   }
@@ -289,6 +291,90 @@ app.get('/submitReview/:Movies', async (req,res)=>{
 });
 
 
+app.get('/adminMovies', async (req,res) =>{
+  res.render("adminMovies.ejs");
+});
+
+app.post('/addMovie', async (req,res) =>{
+  const title = req.body.title;
+  const releaseDate = req.body.releaseDate;
+  const synopsis = req.body.synopsis;
+  const runtime = req.body.runtime;
+  const imdbRating = req.body.imdbRating;
+  const movieImgUrl = req.body.movieImgUrl;
+  const movieLang = req.body.movieLang;
+  await addMovieToDB(title,releaseDate,synopsis,runtime,imdbRating,movieImgUrl,movieLang);
+  const message = "Movie Added successfully";
+  res.render("adminMovies.ejs",{message:message});
+});
+
+app.get('/showArtists', async (req,res) =>{
+  const artistsInDB = await getArtistsInDb();
+  res.render("showArtists.ejs",{artistsInDB:artistsInDB});
+
+});
+
+app.get('/addArtists', async (req,res) =>{
+  res.render("addArtists.ejs");
+});
+
+app.post('/addArtists', async (req,res) =>{
+  const artistName = req.body.artistName;
+  const role = req.body.role;
+  const artistGender = req.body.artistGender;
+  await addArtistsToDB(artistName,role,artistGender);
+  const message = "Artist added to the Database";
+  res.render("addArtists.ejs",{message:message});
+});
+
+app.get('/adminGenre' ,async (req,res) =>{
+  const genresInDB = await getGenresInDB();
+  res.render("adminGenre.ejs",{genresInDB:genresInDB});
+});
+
+app.post('/addGenres', async (req,res)=>{
+
+  const genreName = req.body.genreName;
+  await addGenreToDB(genreName);
+  const message = "Genre added to the database"
+  const genresInDB = await getGenresInDB();
+  res.render("adminGenre.ejs",{genresInDB:genresInDB,message:message});
+});
+
+app.get("/adminMovieArtist", async(req,res)=>{
+
+  const movieArtists = await getMovieArtists();
+  res.render("adminMovieArtist.ejs",{movieArtists:movieArtists});
+});
+
+app.post("/adminMovieArtists", async(req,res)=>{
+
+  const artistId = req.body.artistId;
+  const movieId = req.body.movieId;
+  const role = req.body.role;
+  await addMovieArtist(artistId,movieId,role);
+  const message = "Inserted Successfully";
+  const movieArtists = await getMovieArtists();
+  res.render("adminMovieArtist.ejs",{movieArtists:movieArtists, message:message});
+
+});
+
+app.get("/adminMovieGenre", async(req,res)=>{
+
+  const movieGenres = await getMovieGenres();
+  res.render("adminMovieGenre.ejs",{movieGenres:movieGenres});
+});
+
+app.post("/adminMovieGenre", async(req,res)=>{
+
+  const genreId = req.body.genreId;
+  const movieId = req.body.movieId;
+  await addMovieGenre(genreId,movieId);
+  const message = "Inserted successfully"
+  const movieGenres = await getMovieGenres();
+  res.render("adminMovieGenre.ejs",{movieGenres:movieGenres,message:message});
+});
+
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }
@@ -484,4 +570,96 @@ async function getCompletedMovies(userId){
   const rows= result[0];
   console.log(rows);
   return rows;
-}
+};
+
+async function getMoviesInDatabase() {
+  try {
+    const result = await db.query("SELECT MOVIE_ID, TITLE FROM MOVIE");
+    const rows = result[0];
+    return rows;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    return []; 
+  }
+};
+
+async function addMovieToDB(title,releaseDate,synopsis,runtime,imdbRating,movieImgUrl,movieLang){
+  try{
+    const [result] = await db.query("INSERT INTO MOVIE(TITLE,RELEASE_DATE,SYNOPSIS,RUNTIME,IMDB_RATING,MOVIE_IMAGE_URL,MOVIE_LANG) VALUES(?,?,?,?,?,?,?) ",[title,releaseDate,synopsis,runtime,imdbRating,movieImgUrl,movieLang]);
+    console.log(result);
+    console.log('Inserted Successfully');
+  } catch(error){
+    console.log(error);
+  }
+};
+
+async function getArtistsInDb(){
+  const result = await db.query("SELECT ARTIST_ID, ARTIST_NAME, GENDER, ROLE FROM ARTIST");
+  const rows = result[0];
+  console.log(rows);
+  return rows;
+
+};
+
+async function addArtistsToDB(artistName,role,artistGender){
+  try{
+    const [result] = await db.query("INSERT INTO ARTIST(ARTIST_NAME,ROLE,GENDER) VALUES(?,?,?) ",[artistName,role,artistGender]);
+    console.log(result);
+    console.log('Inserted Successfully');
+  } catch(error){
+    console.log(error);
+  }
+};
+
+async function getGenresInDB(){ 
+  const result = await db.query("SELECT GENRE_ID, GENRE_NAME FROM GENRE");
+  const rows = result[0];
+  console.log(rows);
+  return rows;
+};
+
+async function  addGenreToDB(genreName){
+  try{
+    const [result] = await db.query("INSERT INTO GENRE(GENRE_NAME) VALUES(?) ",[genreName]);
+    console.log(result);
+    console.log('Inserted Successfully');
+  } catch(error){
+    console.log(error);
+  }
+};
+
+async function  getMovieArtists(){
+  const result = await db.query("SELECT A.ARTIST_NAME, M.TITLE, MA.MOVIE_ROLE FROM ARTIST A JOIN MOVIE_ARTIST MA ON A.ARTIST_ID = MA.ARTIST_ID JOIN MOVIE M ON MA.MOVIE_ID = M.MOVIE_ID");
+  const rows = result[0];
+  console.log(rows);
+  return rows;
+};
+
+async function addMovieArtist(artistId,movieId,role){
+  try{
+    const [result] = await db.query("INSERT INTO MOVIE_ARTIST(ARTIST_ID,MOVIE_ID,MOVIE_ROLE) VALUES(?,?,?) ",[artistId,movieId,role]);
+    console.log(result);
+    console.log('Inserted Successfully');
+  } catch(error){
+    console.log(error);
+  }
+};
+
+
+async function getMovieGenres(){
+  const result = await db.query("SELECT M.TITLE, G.GENRE_NAME FROM MOVIE M JOIN MOVIE_GENRE MG ON M.MOVIE_ID = MG.MOVIE_ID JOIN GENRE G ON MG.GENRE_ID = G.GENRE_ID");
+  const rows = result[0];
+  console.log(rows);
+  return rows;
+
+};
+
+async function addMovieGenre(genreId,movieId){
+  try{
+    const [result] = await db.query("INSERT INTO MOVIE_GENRE(GENRE_ID,MOVIE_ID) VALUES(?,?) ",[genreId,movieId]);
+    console.log(result);
+    console.log('Inserted Successfully');
+  } catch(error){
+    console.log(error);
+  }
+};

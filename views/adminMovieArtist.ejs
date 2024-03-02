@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li ><a href="/admin">Movies in database</a></li>
+                <li ><a href="/adminMovies">Add Movies</a></li>
+                <li><a href="/showArtists">Artists in Database</a></li>
+                <li ><a href="/addArtists">Add Artists in Database</a></li>
+                <li ><a href="/adminGenre">Genres in Database</a></li>
+                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
+                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
+    
+            </ul>
+        </div>
+        <!-- <div>
+            <form action="/search" method="get">
+                <input type="text" placeholder="Search Movies" name="Movies">
+                <button type="submit">Go</button>
+            </form>
+        </div> -->
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div>
+        <h2>Link Artist too Movies</h2>
+        <div>
+            <form action="/adminMovieArtists" method="post">
+                <label for="movieId">Enter Movie ID:</label>
+                <input type="number" name="movieId" id="" required>
+                <label for="artistId">Enter Artist ID:</label>
+                <input type="number" name="artistId" id="" required>
+                <label for="role">Enter the Role (All Caps):</label>
+                <input type="text" name="role" id="" required>
+                <button type="submit">Go</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <h2>Showing Table Movie_Artist</h2>
+        <div>
+            <% if (locals.movieArtists && locals.movieArtists.length>0) {%>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Artist</th>
+                            <th>Movie</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% movieArtists.forEach(movie =>{ %>
+                        <tr>
+                            
+                                <td><%= movie.ARTIST_NAME %></td>
+                                <td><%= movie.TITLE %></td>
+                                <td><%= movie.MOVIE_ROLE%></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <% } else {%>
+                    <p>No Movie Artist in the table</p>
+                <% } %>
+        </div>
+    </div>
+    <% if (locals.message){ %>
+        <script>
+            alert("<%=message%>");
+        </script>
+    <% } %>
+    
+</body>
+</html>

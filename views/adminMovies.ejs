@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title</title>
 </head>
 <body>
     <nav>
@@ -31,38 +31,34 @@
             </form>
         </div>
     </nav>
-<div>
-    <h1>Movies in Database</h1>
     <div>
-        <% if (locals.moviesInDatabase) {%>
-        <table>
-            <thead>
-                <tr>
-                    <th>Movie ID</th>
-                    <th>Movie Name</th>
+    <h1>Add Movies</h1>
+    <form action="/addMovie" method="post">
+        <label for="title">Movie Name : </label>
+        <input type="text" name="title" id="" required>
+        <label for="releaseDate">Release Date (YYYY-MM-DD) : </label>
+        <input type="text" name="releaseDate"
+            pattern="\d{4}-\d{2}-\d{2}" required>
+        <label for="synopsis">Synopsis : </label>
+        <input type="text" name="synopsis" id="" required>
+        <label for="runtime">Runtime (0h 00m) : </label>
+        <input type="text" name="runtime" id="" required>
+        <label for="imdbRating"> IMDB Rating (0.0/10) : </label>
+        <input type="text" name="imdbRating" id=""required>
+        <label for="movieImgUrl">Movie Image Url : </label>
+        <input type="text" name="movieImgUrl" id="" required>
+        <label for="movieLang"> Movie Language : </label>
+        <input type="text" name="movieLang" id="" required>
+        <button type="submit">Go</button>
 
-                </tr>
-            </thead>
-            
-            <tbody>
-                <% moviesInDatabase.forEach(Movie =>{ %>
-               
-                    <tr>
-                        <td><%= Movie.MOVIE_ID %></td>
-                        <td><%= Movie.TITLE %></td>
-                    </tr>
-                <% }); %>
-
-            </tbody>
-
-        </table>
-        <% } else { %>
-            <p>No Movies in Database</p>
-        <% } %>
-
-    </div>
+    </form>
+    
 
 </div>
-    
+<% if (locals.message) {%>
+    <script>
+        alert("<%=message%>")
+    </script>
+<% } %>
 </body>
 </html>

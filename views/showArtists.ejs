@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Artists In DB</title>
 </head>
 <body>
     <nav>
@@ -31,38 +31,35 @@
             </form>
         </div>
     </nav>
-<div>
-    <h1>Movies in Database</h1>
     <div>
-        <% if (locals.moviesInDatabase) {%>
-        <table>
-            <thead>
-                <tr>
-                    <th>Movie ID</th>
-                    <th>Movie Name</th>
-
-                </tr>
-            </thead>
-            
-            <tbody>
-                <% moviesInDatabase.forEach(Movie =>{ %>
-               
-                    <tr>
-                        <td><%= Movie.MOVIE_ID %></td>
-                        <td><%= Movie.TITLE %></td>
-                    </tr>
-                <% }); %>
-
-            </tbody>
-
-        </table>
-        <% } else { %>
-            <p>No Movies in Database</p>
-        <% } %>
-
+        <h1>Artists in Database</h1>
+        <div>
+            <% if (locals.artistsInDB && locals.artistsInDB.length>0){ %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Artist ID </th>
+                            <th>Artist Name </th>
+                            <th>Gender</th>
+                            <th>Profession</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% artistsInDB.forEach(artist =>{ %>
+                            <tr>
+                                <td><%= artist.ARTIST_ID %></td>
+                                <td><%= artist.ARTIST_NAME %></td>
+                                <td><%= artist.GENDER %></td>
+                                <td><%= artist.ROLE %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No Artists in the Database currently</p>
+            <% } %>
+        </div>
     </div>
-
-</div>
     
 </body>
 </html>
