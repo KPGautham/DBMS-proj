@@ -4,70 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="movie.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/home">Home</a></li>
-                <li ><a href="/watchlist">Watchlist</a></li>
-                <li><a href="/completed">Completed</a></li>
-                <li ><a href="/reviews">Reviews</a></li>
-                <li ><a href="/community">Community</a></li>
-
-            </ul>
-        </div>
-        <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
+    <div id="nav">
+            <h4 href="/home">Home</h4>
+            <h4 href="/watchlist">WatchList</h4>
+            <h4 href="/reviews">reviews</h4>
+            <h4 href="/completed">Completed</h4>
+            <h4 href="/reviews">Reviews</h4>
+            <h4 href="/community">Community</h4>
+            <form id='search' action="/search">
+                <input type="text" placeholder="Search Movies">
                 <button type="submit">Go</button>
             </form>
+            <form id="login" action="/logout" method="post">
+                <button id="loginbuttton" type="submit">Logout</button>
+            </form>        
         </div>
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <% if (locals.movieDetails){ %>
-    <h1><%=locals.movieDetails.TITLE%></h1>
+        <div id="cursor"></div>
+        <div id="cursor-blur"></div>
+        
+        <div id="main">
+            <div id="page1">
+            <% if (locals.movieDetails){ %>
+            <h1><%=locals.movieDetails.TITLE%></h1>
     
-    <div>
-        <div>
-            <div>
+    <div id="moviepage">
+        <div id="image-container">
                 <img src="<%= locals.movieDetails.MOVIE_IMAGE_URL %>" alt="">
-
-            </div>
         </div>
-        <div>
-            <div>Language :<%= movieDetails.MOVIE_LANG %>  </div>
-            <div>RunTime : <%=movieDetails.RUNTIME  %></div>
-            <div>IMDB RATING : <%= movieDetails.IMDB_RATING %> </div>
-            <div><p><%= movieDetails.SYNOPSIS %></p></div>
+        <div id="details">
+            <div id="Language">Language :<%= movieDetails.MOVIE_LANG %>  </div>
+            <div id="RunTime">RunTime : <%=movieDetails.RUNTIME  %></div>
+            <div id="IMDB_RATING">IMDB RATING : <%= movieDetails.IMDB_RATING %> </div>
+            <div id="SYNOPSIS"><p><%= movieDetails.SYNOPSIS %></p></div>
         </div>
-        <div>
+        <div id="Actors">
             <h2>Actors </h2>
 
             <% if (locals.actors && locals.actors.length>0) { %>
                 <% actors.forEach(actor =>{ %>
-                    <div>
+                    <div id="actname">
                         <%= actor.ARTIST_NAME %>
                     </div>
                 <% }); %>
             <% }else{ %>
                 <p>No Artist Involved</p>
-            <% } %>
-
-
-            
+            <% } %>            
         </div>
-
-
-        <div>
+        <div id="director">
             <h2>Director</h2>
             <% if (locals.directors && locals.directors.length>0) { %>
                 <% directors.forEach(director =>{ %>
-                    <div>
+                    <div id="dirname">
                         <%= director.ARTIST_NAME %>
                     </div>
                 <% }); %>
@@ -76,8 +66,8 @@
             <% } %>
 
         </div>
-        <div>
-            <div>
+        <div id="watchlistpage">
+            <div id="watchlist">
                 <form action="/watchlist/<%= movieDetails.MOVIE_ID %>">
 
                 
@@ -90,7 +80,7 @@
                 <% } %>
 
             </div>
-            <div>
+            <div id="watched">
                 <form action="/watched/<%= movieDetails.MOVIE_ID%>">
                 <button type="submit">Completed</button>
                 </form>
@@ -101,7 +91,7 @@
                 <% } %>
             </div>
         </div>
-        <div>
+        <div id="review">
         <h3>Write Your Review here</h3>
             <form action="/submitReview/<%= movieDetails.MOVIE_ID%>">
                 <input type="text" name="review" >
@@ -121,7 +111,9 @@
     <% } else { %>
         <p>Movie details not Available</p>
     <% } %>
-    
-    
+            </div>
+            </div> 
+    <script src="movie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

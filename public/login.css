@@ -62,7 +62,7 @@ form button:hover {
     background-color: #f51d2a;
 }
 
-.forgot-password, .signup {
+.adminreg, .signup {
     color: #fff;
     text-decoration: none;
     margin-top: 1rem;
@@ -70,7 +70,7 @@ form button:hover {
     transition: color 0.2s;
 }
 
-.forgot-password:hover, .signup:hover {
+.adminreg:hover, .signup:hover {
     color: #ccc;
 }
 .language-container {

@@ -60,6 +60,7 @@ app.get("/home", async (req,res)=>{
         // const WatchlistMovies = await showWatchlistMovies(req.user);
         //console.log(WatchlistMovies);
         const trendingMovies = await showTrendingMovies();
+        console.log(trendingMovies)
         res.render("home.ejs",{trendingMovies:trendingMovies});
     } else{   
 
