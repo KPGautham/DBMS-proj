@@ -41,7 +41,7 @@
                         <a href="/movie/<%= Movie.MOVIE_ID %>"><%= Movie.TITLE %></a>
                     </div>
                     <div>
-                        No of times : <%= Movie.NO_OF_TIMES %> <button><a href="/add/<%= Movie.MOVIE_ID %>">Add</a></button>
+                        No of times : <%= Movie.NO_OF_TIMES %> <button><a href="/incrementMovie?movieId=<%= Movie.MOVIE_ID %>">Add</a></button>
                     </div>
                 <% }); %>
             <% } else{ %>

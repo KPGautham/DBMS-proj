@@ -43,6 +43,11 @@
             <div>Language :<%= movieDetails.MOVIE_LANG %>  </div>
             <div>RunTime : <%=movieDetails.RUNTIME  %></div>
             <div>IMDB RATING : <%= movieDetails.IMDB_RATING %> </div>
+            <div>
+                <% if (movieDetails.RATING !== null){ %>
+                    Average Rating : <%=movieDetails.RATING %>
+                <% } %>
+            </div>
             <div><p><%= movieDetails.SYNOPSIS %></p></div>
         </div>
         <div>
