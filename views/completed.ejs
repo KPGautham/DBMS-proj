@@ -4,43 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Completed</title>
+    <link rel="stylesheet" href="completed.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/home">Home</a></li>
-                <li ><a href="/watchlist">Watchlist</a></li>
-                <li><a href="/completed">Completed</a></li>
-                <li ><a href="/reviews">Reviews</a></li>
-                <li ><a href="/community">Community</a></li>
-
-            </ul>
-        </div>
-        <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div>
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <div>
+    <div id="nav">
+        <a href="/home">Home</a>
+        <a href="/watchlist">WatchList</a>
+        <a href="/completed">Completed</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/community">Community</a>
+        <form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
+            <button type="submit">Go</button>
+        </form>
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
+    </div>
+    <div id="main">
+    <div id="moviecompleted">
         <h1>Movies Completed</h1>
-        <div>
+        <div id="moviedetails">
             <% if (locals.completedMovies && locals.completedMovies.length>0) {%>
                 <% completedMovies.forEach(Movie =>{ %>
-                    <div>
+                    <div id="image">
                         <img src="<%=Movie.MOVIE_IMAGE_URL%>" alt="">
                     </div>
-                    <div>
+                    <div id="movietitle">
                         <a href="/movie/<%= Movie.MOVIE_ID %>"><%= Movie.TITLE %></a>
                     </div>
-                    <div>
+                    <div id="NO_OF_TIMES">
                         No of times : <%= Movie.NO_OF_TIMES %> <button><a href="/incrementMovie?movieId=<%= Movie.MOVIE_ID %>">Add</a></button>
                     </div>
                 <% }); %>
@@ -49,6 +42,8 @@
             <% } %>
         </div>
     </div>
-    
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="home.js"></script>
 </body>
 </html>

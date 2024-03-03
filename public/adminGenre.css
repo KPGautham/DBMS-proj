@@ -1,30 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat";
+  color: black;
+  
+}
+
+html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  #nav {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    padding: 0 10px;
-  }
-  
-  #nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 5px 10px;
-  }
-  
-  #nav a:hover {
-    background-color: #555;
-  }
-  
+  height: 100%;
+  width: 100%;
+}
+*::selection {
+  background-color: #fff;
+  color: #95c11e;
+}
+
+body::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  background: #95c11e;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 50px;
+}
+body {
+  overflow-x: hidden;
+}
+#cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #95c11e;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 99;
+  transition: all linear 0.1s;
+}
+#cursor-blur {
+  height: 400px;
+  width: 400px;
+  background-color: rgba(150, 193, 30, 0.3);
+  border-radius: 50%;
+  position: fixed;
+  filter: blur(100px);
+  z-index: 9;
+  transition: all linear 0.4s;
+}
+#nav{
+  height: 130px;
+  width: 100%;  
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  gap: 50px;
+  justify-content: flex-start;
+  position: fixed;
+  z-index: 999;
+}
+#nav a{
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1.15vw;
+}
+form {
+display: flex;
+margin-top: 20px;
+}
+
+button[type="submit"] {
+padding: 5px 10px;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+button[type="submit"]:hover {
+background-color: #3e8e41;
+}
+@keyframes scroll {
+from {
+  transform: translateX(0);
+}
+to {
+  transform: translateX(-100%);
+}
+}
+#main{
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.39);
+}  
   #main {
     display: flex;
     justify-content: center;
@@ -39,6 +108,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 100px;
     margin-right: 20px;
     margin-bottom: 20px;
   }
@@ -85,8 +155,10 @@ body {
   
   #genre_database {
     display: flex;
+    padding-top: 100px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
   }
   

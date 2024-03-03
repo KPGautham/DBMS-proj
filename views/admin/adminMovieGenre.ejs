@@ -4,36 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="adminMovieGenre.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/admin">Movies in database</a></li>
-                <li ><a href="/adminMovies">Add Movies</a></li>
-                <li><a href="/showArtists">Artists in Database</a></li>
-                <li ><a href="/addArtists">Add Artists in Database</a></li>
-                <li ><a href="/adminGenre">Genres in Database</a></li>
-                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
-                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
-    
-            </ul>
-        </div>
-        <!-- <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
+        <div id="nav">
+            <a href="/admin">Movies in database</a>
+            <a href="/adminMovies">Add Movies</a>
+            <a href="/showArtists">Artists in Database</a>
+            <a href="/addArtists">Add Artists in Database</a>
+            <a href="/adminGenre">Genres in Database</a>
+            <a href="/adminMovieGenre">Link Movies with Genres </a>
+            <a href="/adminMovieArtist">Link Movies with Artists</a>
+            <!--<form id='search' action="/search">
+                <input type="text" placeholder="Search Movies">
                 <button type="submit">Go</button>
-            </form>
-        </div> -->
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
+            </form>-->
+            <form id="login" action="/logout" method="post">
+                <button id="loginbuttton" type="submit">Logout</button>
+            </form>        
         </div>
-    </nav>
-    <div>
+        <div id="main">
+        <div id="page1">
+    <div id="linkgenres">
         <h2>Link Genres to Movies</h2>
-        <div>
+        <div id="form">
             <form action="/adminMovieGenre" method="post">
                 <label for="genreId">Enter Genre ID:</label>
                 <input type="number" name="genreId" id="" required>
@@ -43,7 +37,7 @@
             </form>
         </div>
         <h2>Showing Movie_Genres</h2>
-        <div>
+        <div id="table">
             <% if (locals.movieGenres && locals.movieGenres.length>0) {%>
             <table>
                 <thead>
@@ -73,6 +67,7 @@
             alert("<%=message%>");
         </script>
     <% } %>
-
+        </div>
+    </div>
 </body>
 </html>

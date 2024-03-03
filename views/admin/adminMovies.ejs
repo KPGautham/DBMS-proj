@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title</title>
+    <title>adminMovies</title>
+    <link rel="stylesheet" href="adminMovies.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/admin">Movies in database</a></li>
-                <li ><a href="/adminMovies">Add Movies</a></li>
-                <li><a href="/showArtists">Artists in Database</a></li>
-                <li ><a href="/addArtists">Add Artists in Database</a></li>
-                <li ><a href="/adminGenre">Genres in Database</a></li>
-                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
-                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
-    
-            </ul>
-        </div>
-        <!-- <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div> -->
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <div>
+    <div id="nav">
+        <a href="/admin">Movies in database</a>
+        <a href="/adminMovies">Add Movies</a>
+        <a href="/showArtists">Artists in Database</a>
+        <a href="/addArtists">Add Artists in Database</a>
+        <a href="/adminGenre">Genres in Database</a>
+        <a href="/adminMovieGenre">Link Movies with Genres </a>
+        <a href="/adminMovieArtist">Link Movies with Artists</a>
+        <!--<form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
+            <button type="submit">Go</button>
+        </form>-->
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
+    </div>
+    <div id="main">
+        <div id="page1">
+    <div id="addmovie">
     <h1>Add Movies</h1>
     <form action="/addMovie" method="post">
         <label for="title">Movie Name : </label>
@@ -52,13 +46,13 @@
         <button type="submit">Go</button>
 
     </form>
-    
-
 </div>
 <% if (locals.message) {%>
     <script>
         alert("<%=message%>")
     </script>
 <% } %>
+</div>
+</div>
 </body>
 </html>
