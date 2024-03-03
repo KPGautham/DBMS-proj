@@ -150,6 +150,7 @@ button[type="submit"]:hover {
   #movietext {
     margin: 0;
     padding-top: 0.5rem;
+    padding-left: 50px;
   }
   
   #movietext p {
