@@ -278,6 +278,15 @@ app.get('/watched/:Movies', async (req,res)=>{
   }
 });
 
+app.get('/finished/:Movies', async(req,res)=>{
+  const movieId = req.params.Movies;
+  const userId = req.user.USER_ID;
+  await removeMovieFromWatchlist(movieId,userId);
+  await addMovieToCompleted(movieId,userId);
+  const watchlistMovies = await showWatchlistMovies(req.user);
+  res.render("watchlist.ejs",{watchlistMovies:watchlistMovies});
+})
+
 app.get('/submitReview/:Movies', async (req,res)=>{
   const movieId = req.params.Movies;
   const userId = req.user.USER_ID;
