@@ -59,7 +59,7 @@
     position: fixed;
     z-index: 999;
 }
-#nav h4{
+#nav a{
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;

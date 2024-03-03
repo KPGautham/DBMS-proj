@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "montserrat";
-    color: black;
+    color: white;
   }
   
   html,
@@ -103,10 +103,11 @@ button[type="submit"]:hover {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: black;
   }
   
   #page1 {
-    background-color: #fff;
+    background-color: black;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
