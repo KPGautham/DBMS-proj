@@ -8,20 +8,21 @@
 </head>
 <body>
     <div id="nav">
-        <a href="/home">Home</a>
-        <a href="/watchlist">WatchList</a>
-        <a href="/completed">Completed</a>
-        <a href="/reviews">Reviews</a>
-        <a href="/community">Community</a>
-        <form id='search' action="/search">
+        <a href="/admin">Movies in database</a>
+        <a href="/adminMovies">Add Movies</a>
+        <a href="/showArtists">Artists in Database</a>
+        <a href="/addArtists">Add Artists in Database</a>
+        <a href="/adminGenre">Genres in Database</a>
+        <a href="/adminMovieGenre">Link Movies with Genres </a>
+        <a href="/adminMovieArtist">Link Movies with Artists</a>
+        <!--<form id='search' action="/search">
             <input type="text" placeholder="Search Movies">
             <button type="submit">Go</button>
-        </form>
+        </form>-->
         <form id="login" action="/logout" method="post">
             <button id="loginbuttton" type="submit">Logout</button>
         </form>        
     </div>
-    <div id="main">
     <div id="artist">
         <h1>Artists in Database</h1>
         <div id="table">
