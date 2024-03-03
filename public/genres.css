@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "montserrat";
+    color: white;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  *::selection {
+    background-color: #fff;
+    color: #95c11e;
+  }
+  
+  body::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    background: #95c11e;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 50px;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  #cursor {
+    height: 20px;
+    width: 20px;
+    background-color: #95c11e;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 99;
+    transition: all linear 0.1s;
+  }
+  #cursor-blur {
+    height: 400px;
+    width: 400px;
+    background-color: rgba(150, 193, 30, 0.3);
+    border-radius: 50%;
+    position: fixed;
+    filter: blur(100px);
+    z-index: 9;
+    transition: all linear 0.4s;
+  }
+  #nav{
+    height: 130px;
+    width: 100%;  
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    gap: 50px;
+    justify-content: flex-start;
+    position: fixed;
+    z-index: 999;
+}
+#nav a{
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.15vw;
+}
+form {
+  display: flex;
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 5px;
+  margin-right: 10px;
+  color: black;
+}
+
+
+
+button[type="submit"] {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+#main {
+    padding-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.39);
+  }
+  
+  #page1, #page2, #page3 {
+    width: 31%;
+  }
+  
+  #container, #page2container, #p3container {
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  #image, #p2img, #p3image {
+    height: 200px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  #image img, #p2img img, #p3image img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  #movietitle, #p2title, #p3title {
+    margin: 0;
+  }
+  
+  #movietitle a, #p2title a, #p3title a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  #movietitle a:hover, #p2title a:hover, #p3title a:hover {
+    text-decoration: underline;
+  }

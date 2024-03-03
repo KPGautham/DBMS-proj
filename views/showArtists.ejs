@@ -4,36 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artists In DB</title>
+    <link rel="stylesheet" href="showArtists.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/admin">Movies in database</a></li>
-                <li ><a href="/adminMovies">Add Movies</a></li>
-                <li><a href="/showArtists">Artists in Database</a></li>
-                <li ><a href="/addArtists">Add Artists in Database</a></li>
-                <li ><a href="/adminGenre">Genres in Database</a></li>
-                <li><a href="/adminMovieGenre">Link Movies with Genres </a></li>
-                <li><a href="/adminMovieArtist">Link Movies with Artists</a></li>
-    
-            </ul>
-        </div>
-        <!-- <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div> -->
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <div>
+    <div id="nav">
+        <a href="/home">Home</a>
+        <a href="/watchlist">WatchList</a>
+        <a href="/completed">Completed</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/community">Community</a>
+        <form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
+            <button type="submit">Go</button>
+        </form>
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
+    </div>
+    <div id="main">
+    <div id="artist">
         <h1>Artists in Database</h1>
-        <div>
+        <div id="table">
             <% if (locals.artistsInDB && locals.artistsInDB.length>0){ %>
                 <table>
                     <thead>
@@ -60,6 +51,6 @@
             <% } %>
         </div>
     </div>
-    
+   </div> 
 </body>
 </html>

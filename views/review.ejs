@@ -4,41 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review</title>
+    <link rel="stylesheet" href="review.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <ul>
-                <li ><a href="/home">Home</a></li>
-                <li ><a href="/watchlist">Watchlist</a></li>
-                <li><a href="/completed">Completed</a></li>
-                <li ><a href="/reviews">Reviews</a></li>
-                <li ><a href="/community">Community</a></li>
-
-            </ul>
-        </div>
-        <div>
-            <form action="/search" method="get">
-                <input type="text" placeholder="Search Movies" name="Movies">
-                <button type="submit">Go</button>
-            </form>
-        </div>
-        <div>
-            <form action="/logout" method="post">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    <div>
+    <div id="nav">
+        <a href="/home">Home</a>
+        <a href="/watchlist">WatchList</a>
+        <a href="/completed">Completed</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/community">Community</a>
+        <form id='search' action="/search">
+            <input type="text" placeholder="Search Movies">
+            <button type="submit">Go</button>
+        </form>
+        <form id="login" action="/logout" method="post">
+            <button id="loginbuttton" type="submit">Logout</button>
+        </form>        
+    </div>
+    <div id="main">
+    <div id="review">
         <h1>Your Reviews</h1>
         <% if(locals.reviews && locals.reviews.length>0) { %>
             <% reviews.forEach(review =>{ %>
-            <div>
-                <div>
+            <div id="container">
+                <div id="movieimg">
                     <img src="<%= review.MOVIE_IMAGE_URL %>" alt="">
                 </div>
-                <div> <a href=""><%= review.TITLE %></a></div>
-                <div>
+                <div id="movietitle"> <a href=""><%= review.TITLE %></a></div>
+                <div id="movietext">
                     <p><%= review.TEXT %></p>
                     <h3>Score :<%= review.SCORE %>/10</h3>
                     <p>Likes:<%= review.LIKES %></p>
@@ -51,6 +44,6 @@
         <% } %>
 
     </div>
-    
+    </div>
 </body>
 </html>
