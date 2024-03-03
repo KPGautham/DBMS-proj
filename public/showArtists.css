@@ -129,7 +129,3 @@ button[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.39);
     font-weight: bold;
   }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
