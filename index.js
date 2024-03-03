@@ -396,6 +396,14 @@ app.get("/incrementMovie", async (req,res)=>{
   
 });
 
+app.get("/genres", async(req,res)=>{
+
+  const actionMovies = await getActionMovies();
+  const comedyMovies = await getComedyMovies();
+  const romanceMovies = await getRomanceMovies();
+  res.render("genres.ejs",{actionMovies:actionMovies,comedyMovies:comedyMovies,romanceMovies:romanceMovies});
+});
+
 
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
@@ -485,7 +493,7 @@ async function getUserType(userId) {
 
 
 async function showTrendingMovies() {
-  const result = await db.query("SELECT MOVIE_ID, TITLE, MOVIE_IMAGE_URL FROM MOVIE ORDER BY MOVIE_ID DESC LIMIT 5");
+  const result = await db.query("SELECT MOVIE_ID, TITLE, MOVIE_IMAGE_URL FROM MOVIE ORDER BY MOVIE_ID ASC LIMIT 5");
   
   const rows = result[0];
  
@@ -702,5 +710,29 @@ async function incrementMovies(movieId,userId){
 async function getUserReviews(userId){
   const result = await db.query("SELECT M.TITLE,  M.MOVIE_IMAGE_URL, R.REVIEW_ID, R.TEXT, R.SCORE, R.USER_ID, R.MOVIE_ID, R.LIKES, U.USERNAME FROM MOVIE M, REVIEW R, USER U WHERE R.MOVIE_ID=M.MOVIE_ID AND R.USER_ID=?",[userId]);
   const rows = result[0];
+  return rows;
+};
+
+async function getActionMovies(){
+  const result = await db.query("SELECT M.MOVIE_ID, M.TITLE, M.MOVIE_IMAGE_URL FROM MOVIE M JOIN MOVIE_GENRE MG ON M.MOVIE_ID = MG.MOVIE_ID JOIN GENRE G ON MG.GENRE_ID = G.GENRE_ID WHERE G.GENRE_NAME = 'Action'");
+  
+  const rows = result[0];
+ 
+  return rows;
+};
+
+async function getComedyMovies(){
+  const result = await db.query("SELECT M.MOVIE_ID, M.TITLE, M.MOVIE_IMAGE_URL FROM MOVIE M JOIN MOVIE_GENRE MG ON M.MOVIE_ID = MG.MOVIE_ID JOIN GENRE G ON MG.GENRE_ID = G.GENRE_ID WHERE G.GENRE_NAME = 'Comedy'");
+  
+  const rows = result[0];
+ 
+  return rows;
+};
+
+async function getRomanceMovies(){
+  const result = await db.query("SELECT M.MOVIE_ID, M.TITLE, M.MOVIE_IMAGE_URL FROM MOVIE M JOIN MOVIE_GENRE MG ON M.MOVIE_ID = MG.MOVIE_ID JOIN GENRE G ON MG.GENRE_ID = G.GENRE_ID WHERE G.GENRE_NAME = 'Romance'");
+  
+  const rows = result[0];
+ 
   return rows;
 };
