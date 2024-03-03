@@ -39,7 +39,7 @@
                         <div>
                             <img src="<%= Movie.MOVIE_IMAGE_URL %>" alt="">
                         </div>
-                        <div><%= Movie.TITLE %></div>
+                        <div><a href="/movie/<%=Movie.MOVIE_ID %>"><%= Movie.TITLE %></a></div>
                     </div>
                 <% }); %>
             <% } else { %>
