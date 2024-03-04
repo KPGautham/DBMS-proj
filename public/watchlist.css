@@ -98,53 +98,61 @@ button[type="submit"]:hover {
     transform: translateX(-100%);
   }
 }
-  #main {
+  #main #page1{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: black;
+    height: 100%;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.39);
+    height: 100%;
+    width: 100%;
+      
+  } 
+  #moviehead {
+    width: 100%;
+    max-width: 800px;
+    padding-top: 150px;
   }
   
-  #page1 {
-    background-color: black;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%;
-  }
-  
-  #page1 h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
+  #moviehead h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  } 
   #movie {
     display: flex;
     flex-wrap: wrap;
+    width: 75%;
+    height: 75%;
+    margin-bottom: 20px;
+    gap: 20px;
     justify-content: space-between;
   }
+
   
   #movieimg {
     width: 30%;
-    margin-bottom: 2rem;
+    margin-right: 2%;
   }
   
   #movieimg img {
     width: 100%;
-    border-radius: 10px;
+    height: auto;
+    border-radius: 5px;
   }
   
-  #movietitle {
-    width: 65%;
-    margin-bottom: 2rem;
+  #movietitle { 
+    width: 20%;
+    color: #fff;
   }
   
   #movietitle a {
     text-decoration: none;
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
     display: block;
   }
   
@@ -153,17 +161,19 @@ button[type="submit"]:hover {
   }
   
   #form {
-    width: 15%;
+    width: 30%;
+    text-align: center;
   }
   
   #form button {
+    padding: 5px 10px;
+    margin-left: 10px;
     background-color: #6c63ff;
     border: none;
     color: #fff;
     padding: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
   }
   
   #form button:hover {

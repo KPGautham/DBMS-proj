@@ -75,9 +75,6 @@ padding: 5px;
 margin-right: 10px;
 color: black;
 }
-
-
-
 button[type="submit"] {
 padding: 5px 10px;
 background-color: #4CAF50;
@@ -109,13 +106,18 @@ to {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     padding: 0 20px;
     flex-wrap: wrap;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.39);
+    height: 100%;
+    width: 100%;
   }
   #moviecompleted {
     width: 100%;
     max-width: 800px;
+    padding-top: 150px;
   }
   
   #moviecompleted h1 {
@@ -126,7 +128,10 @@ to {
   #moviedetails {
     display: flex;
     flex-wrap: wrap;
+    width: 75%;
+    height: 75%;
     margin-bottom: 20px;
+    gap: 20px;
   }
   
   #image {
@@ -141,8 +146,8 @@ to {
   }
   
   #movietitle {
-    width: 38%;
-    margin-right: 2%;
+    width: 20%;
+    color: #fff;
   }
   
   #movietitle a {

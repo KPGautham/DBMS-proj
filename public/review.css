@@ -109,7 +109,7 @@ button[type="submit"]:hover {
   
   #review {
     width: 70%;
-    padding-top: 100px;
+    padding-top: 120px;
   }
   
   #container {
@@ -139,7 +139,7 @@ button[type="submit"]:hover {
   }
   
   #movietitle a {
-    color: #333;
+    color: white;
     text-decoration: none;
   }
   

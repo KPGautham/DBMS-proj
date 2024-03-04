@@ -118,7 +118,7 @@ to {
   #review {
     width: 100%;
     max-width: 800px;
-    padding-top: 100px;
+    padding-top: 120px;
   }
   
   #review h1 {
@@ -134,7 +134,7 @@ to {
   }
   
   #image {
-    width: 30%;
+    width: 20%;
     margin-right: 2%;
   }
   
