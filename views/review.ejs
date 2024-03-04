@@ -31,12 +31,14 @@
                 <div id="movieimg">
                     <img src="<%= review.MOVIE_IMAGE_URL %>" alt="">
                 </div>
-                <div id="movietitle"> <a href=""><%= review.TITLE %></a></div>
+            <div id="container2"> 
+                <div id="movietitle"> <a href="/movie/<%= review.MOVIE_ID %>"><%= review.TITLE %></a></div>
                 <div id="movietext">
                     <p><%= review.TEXT %></p>
                     <h3>Score :<%= review.SCORE %>/10</h3>
                     <p>Likes:<%= review.LIKES %></p>
                 </div>
+            </div>
 
             </div>
             <% }); %>

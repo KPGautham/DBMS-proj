@@ -103,7 +103,7 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-    padding: 0 20px;
+    padding: 50px 20px 0px 20px;
     box-sizing: border-box;
     position: relative;
     overflow-y: auto;
@@ -113,6 +113,7 @@
   #page1 {
     width: 100%;
     max-width: 800px;
+    margin-top: 50px;
   }
   
   #page1 h1 {

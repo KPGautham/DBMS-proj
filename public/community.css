@@ -151,7 +151,7 @@ to {
   
   #title a {
     text-decoration: none;
-    color: white;
+    color: red;
     font-size: 20px;
     margin-bottom: 10px;
     display: block;
@@ -162,11 +162,13 @@ to {
   }
   
   #user_reviews {
-    width: 30%;
+    padding-top: 20px;
+    /* width: 30%; */
   }
   
   #user_reviews h2 {
     font-size: 18px;
+    color: grey;
     margin-bottom: 5px;
   }
   
@@ -202,4 +204,9 @@ to {
     font-size: 18px;
     margin-top: 10px;
     text-align: center;
+  }
+
+  #container2 {
+    display: block;
+
   }
