@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="movie.css">
+    <link rel="stylesheet" href="1movie.css">
 </head>
 <body>
     <div id="nav">
-            <h4 href="/home">Home</h4>
-            <h4 href="/watchlist">WatchList</h4>
-            <h4 href="/completed">Completed</h4>
-            <h4 href="/reviews">Reviews</h4>
-            <h4 href="/community">Community</h4>
+            <a href="/home">Home</h4>
+            <a href="/watchlist">WatchList</a>
+            <a href="/completed">Completed</a>
+            <a href="/reviews">Reviews</a>
+            <a href="/community">Community</a>
+            <a href="/genres">Genres</a>
             <form id='search' action="/search">
                 <input type="text" placeholder="Search Movies" name="Movies">
                 <button type="submit">Go</button>
@@ -21,14 +22,12 @@
                 <button id="loginbuttton" type="submit">Logout</button>
             </form>        
         </div>
-        <div id="cursor"></div>
-        <div id="cursor-blur"></div>
-        
         <div id="main">
             <div id="page1">
+                <div id="movietitle">
             <% if (locals.movieDetails){ %>
             <h1><%=locals.movieDetails.TITLE%></h1>
-    
+        </div>
     <div id="moviepage">
         <div id="image-container">
                 <img src="<%= locals.movieDetails.MOVIE_IMAGE_URL %>" alt="">

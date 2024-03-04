@@ -126,13 +126,13 @@ button[type="submit"]:hover {
   position: relative;
 }
 #page1 h1::before{
-  content: "Unlimited movies, TV shows and more.";
+  content: "Welcome to the Movie Database!";
   position: absolute;
   color: black;
   top: -5px;
   left: -5px;
   -webkit-text-stroke: 1.5px red;
-  z-index: -1;
+  z-index: -2;
 }
 #page1 h2{
   font-size: 30px;
