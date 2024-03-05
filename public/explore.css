@@ -98,67 +98,80 @@ to {
   transform: translateX(-100%);
 }
 }
-#main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    padding: 50px 20px 0px 20px;
-    box-sizing: border-box;
-    position: relative;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-  }
+#main #page1{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.39);
+}  
+/*#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#page1 {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}*/
+
+#moviedetails {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#moviedetails h1 {
+  padding-top: 150px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   
-  #page1 {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 50px;
-  }
-  
-  #page1 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  #moviedetails {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
+}
+
+#image {
+  width: 20%;
+  margin-bottom: 1rem;
+}
+
+#image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#movietitle {
+  width: 65%;
+  margin-bottom: 1rem;
+}
+
+#movietitle a {
+  font-size: 1.25rem;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+#movietitle a:hover {
+  color: #555;
+}
+
+@media (max-width: 768px) {
   #image {
-    width: 30%;
-    margin-right: 2%;
+    width: 45%;
   }
-  
-  #image img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
+
   #movietitle {
-    width: 68%;
-    margin-right: 0;
+    width: 45%;
   }
-  
-  #movietitle a {
-    text-decoration: none;
-    color: #333;
-    font-size: 20px;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  #movietitle a:hover {
-    text-decoration: underline;
-  }
-  
-  #no-movies {
-    font-size: 18px;
-    margin-top: 10px;
-    text-align: center;
-  }
+}

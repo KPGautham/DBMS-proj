@@ -11,6 +11,7 @@
   body {
     height: 100%;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.39);
   }
   *::selection {
     background-color: #fff;
@@ -109,7 +110,7 @@ button[type="submit"]:hover {
     z-index: 10;
   }
 #adminMovieArtists{
-  padding-top: 150px;
+  padding-top: 200px;
 }
 #adminMovieArtists,
 #movietable {
