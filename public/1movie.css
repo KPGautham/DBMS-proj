@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "montserrat";
   color: white;
+  background-color: black;
 }
 
 html,
@@ -95,38 +96,35 @@ button[type="submit"]:hover {
     transform: translateX(-100%);
   }
 }
-#main {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.39);
+#main #page1{
   height: 100%;
-  width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.39);
   padding-top: 130px;
 }
-#page1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+
 #movietitle{
     width: 100%;
     max-width: 800px;
-    padding-top: 120px;
+    
   } 
   #movietitle h1{
     font-size: 24px;
     margin-bottom: 10px;
   } 
   #moviepage {
-    padding-top: 100px;
+    
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 20px;
+    align-items: center;
   }
   #image-container {
     flex-basis: 30%;
@@ -134,7 +132,7 @@ button[type="submit"]:hover {
   }
   
   #image-container img {
-    width: 100%;
+    width: 30%;
     height: auto;
   }
   
@@ -184,16 +182,18 @@ button[type="submit"]:hover {
   
   #review {
     margin-top: 20px;
+    
   }
   
   #review h3 {
-    margin-bottom: 10px;
+    margin-bottom: 2px;
   }
   
   input[type="text"], input[type="number"] {
-    width: 50%;
+    width: 30%;
     padding: 10px;
     margin-bottom: 10px;
+    background-color: #fff;
   }
   
   input[type="number"] {
@@ -201,6 +201,7 @@ button[type="submit"]:hover {
   }
   
   label {
+    padding-top: 10px;
     display: block;
     margin-bottom: 5px;
   }
